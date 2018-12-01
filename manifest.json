@@ -4,12 +4,23 @@
   "name": "Photoverse",
   "description": "This extension will allow users to click on any photo and generate a poem using the Microsoft img2poem generator.",
   "version": "1.0",
+  "icons": {
+    "16": "icon.png"
+  },
 
   "browser_action": {
    "default_icon": "icon.png",
    "default_popup": "popup.html"
   },
+
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+
   "permissions": [
-   "activeTab"
+   "contextMenu",
+   "storage",
+   "notifications"
    ]
 }
