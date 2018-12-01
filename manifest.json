@@ -19,7 +19,7 @@
   },
 
   "permissions": [
-   "contextMenu",
+   "contextMenus",
    "storage",
    "notifications"
    ]
