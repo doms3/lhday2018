@@ -14,13 +14,14 @@
   },
 
   "background": {
-    "scripts": ["eventPage.js"],
+    "scripts": ["background.js"],
     "persistent": false
   },
 
   "permissions": [
    "contextMenus",
    "storage",
-   "notifications"
+   "notifications",
+   "activeTab"
    ]
 }
