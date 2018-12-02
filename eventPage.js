@@ -1,6 +1,6 @@
 var contextMenuItem = {
     "id": "poem",
-    "title": "Poetica"
-    "contexts": ["selection"]
+    "title": "Poetica",
+    "contexts": ["selection","image"]
 };
-chrome.contextMenus.create(contextMenuItem);
+chrome.contextMenus.create(menuItem);
