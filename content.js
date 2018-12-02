@@ -8,7 +8,8 @@ chrome.runtime.onMessage.addListener(
 	function( request, sender, sendResponse ) {
 		if( request == "initiateAPICall" ) {
 			var elem =  $( element );
-			var imgSrc = elem.src;
+            var imgSrc = elem.prop( "src" );
+            console.log( imgSrc );
 			setAPICall( imgSrc ).then( 
                 ( json ) => {
                     console.log( json );
@@ -29,17 +30,19 @@ function setAPICall( imageURL ) {
                 "Content-Type": "application/json"
             },
 
-            body: {
+            body: JSON.stringify ({
                 imageURL: imageURL
-            }
+            })
         }).then( ( res ) => res.json() );
 }
  
 function changePicture( domElement, text ) {
     var wrapper = $( "<div class='poetica-container' style='position: relative'></div>" );
     domElement.wrap( wrapper );
-    var tmp = $( "<div class=\"overlay\"><div class=\"text\">" + text + "</div></div>" );
+    var tmp = $( "<div class=\"overlay\"></div>" );
+    tmp.text( text );
     tmp.css( {
+        "white-space": "pre-line",
         position: "absolute",
         top: 0,
         bottom: 0,
@@ -48,7 +51,9 @@ function changePicture( domElement, text ) {
         height: domElement.height(),
         width: domElement.width(),
         opacity: 0,
-        "background-color": "#111111"
+        "background-color": "#111111",
+        "color": "white",
+        "font-size": 24
     } );
     tmp.mouseenter( function() { $( this ).fadeTo( "slow", 0.80 ) } );
     tmp.mouseleave( function() { $( this ).fadeTo( "fast", 0 ) } );
